@@ -22,6 +22,7 @@ public class LaboonCoinTest {
 		assertEquals(res, hash);
 	}
 	
+<<<<<<< HEAD
 	// Asserts that the createBlock method is converting values to a string representation that is
 	// equal to the hex conversions made in the test
 	@Test
@@ -94,4 +95,51 @@ public class LaboonCoinTest {
 		assertEquals(expected.toString(), one.getBlockChain());
 	}
 		
+=======
+	//Tests when hash function is called with an empty string
+	//This is an edge case
+	@Test
+	public void testLaboonHashEmptyString() {
+		LaboonCoin l = new LaboonCoin();
+		int hash = l.hash("");
+		int res = 10000000;
+		assertEquals(res, hash);
+	}
+	
+	//Test when hash function is called with a combination of chars and ints 
+	@Test
+	public void testLaboonHashInvalidInput() {
+		LaboonCoin l = new LaboonCoin();
+		int hash = l.hash("GABEWELLS1994");
+		int res = 1052816540;
+		assertEquals(res, hash);
+	}
+	
+	//Test whether a truly valid hash is valid
+	@Test
+	public void testIsValidHash() {
+		LaboonCoin l = new LaboonCoin();
+		//1038730 = 0x000fd98a
+		boolean res = l.validHash(3, 1038730);
+		assertTrue(res);
+	}
+	
+	//Test whether an invalid hash is truly invalid
+	@Test
+	public void testIsInvalidHash() {
+		LaboonCoin l = new LaboonCoin();
+		//2147483647 = 0x7FFFFFFF
+		boolean res = l.validHash(3, Integer.MAX_VALUE);
+		assertFalse(res);
+	}
+	
+	//Tests whether a hash that has three nonleading zeros is valid
+	@Test
+	public void testIsInvalidHashWithZeros() {
+		LaboonCoin l = new LaboonCoin();
+		//16619920 = 0x00FD9990
+		boolean res = l.validHash(3, 16619920);
+		assertFalse(res);
+	}
+>>>>>>> a80761610840c21c8e33a87e63fb8d334ef9a3b6
 }
