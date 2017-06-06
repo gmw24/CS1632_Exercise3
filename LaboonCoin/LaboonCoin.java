@@ -64,7 +64,12 @@ public class LaboonCoin {
      */
     
     public int hash(String data) {
-	return -1;
+		int n = 10000000; //seed value
+		char[] ch = data.toCharArray(); //convert string to array of chars
+		for (int i = 0; i < ch.length; i++){
+			n = (n*(int)ch[i]) + (int)ch[i]; //loop through array, multiple and add by ascii value
+		}
+	return n;
     }
 
     /**
@@ -83,7 +88,16 @@ public class LaboonCoin {
      */
     
     public boolean validHash(int difficulty, int hash) {
-	return false;
+		boolean isValid = false;
+		int hashLength = 8;
+		
+		//the upperValue a valid hash can attain is 0x000fffff (with a difficulty of three)
+		//this calculates what that upper value is and checks to see if it's less than
+		int upperValue = (int) Math.pow(16, hashLength-difficulty);
+		if(hash < upperValue){
+			isValid = true;
+		}
+	return isValid;
     }
 
     /**

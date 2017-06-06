@@ -12,4 +12,13 @@ public class LaboonCoinTest {
 	assertNotNull(l);
     }
     
+	//Assert hash function works as expected
+	//tests String "boo" is hashed as in documentation
+	@Test
+	public void testLaboonHash() {
+		LaboonCoin l = new LaboonCoin();
+		int hash = l.hash("boo");
+		int res = 1428150834;
+		assertEquals(res, hash);
+	}
 }
