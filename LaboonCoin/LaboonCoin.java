@@ -123,7 +123,7 @@ public class LaboonCoin {
 	int hashVal = 0;
 	boolean foundNonce = false;
 	while (!foundNonce) {
-	    toTry = rootData + String.format("%08x", nonce);
+	    toTry = String.format("%08x", prevHash) + String.format("%08x", nonce) + data;
 	    System.out.print("Trying: " + toTry + ".. ");
 	    
 	    hashVal = hash(toTry);
