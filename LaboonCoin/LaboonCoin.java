@@ -1,3 +1,4 @@
+//Gabriel Wells and Daniel Critchfield
 import java.util.*;
 
 public class LaboonCoin {
